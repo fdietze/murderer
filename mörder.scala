@@ -21,8 +21,12 @@ def enter() {
   io.StdIn.readLine()
 }
 
-println(s"Teilnehmer: ${leute.size}")
-enter()
+def clear() {
+  for (_ <- 0 to 1000) println("-")
+}
+
+// println(s"Teilnehmer: ${leute.size}")
+// enter()
 
 val randomLeute = shuffle(leute)
 
@@ -34,18 +38,12 @@ val pairs = randomLeute zip shift
 
 val randomPairs = shuffle(pairs)
 
-println(randomLeute)
-println(pairs)
-println(randomPairs)
+def auswahl() {
+  for( (täter, i) <- leute.zipWithIndex ) {
+    println(s"$i) ${täter}")
+  }
 
-for (_ <- 0 to 1000) println("-")
-
-for ((täter, opfer) <- randomPairs) {
-  println(s"Jetzt soll ${täter} kommen.")
-  enter()
-
-  println(s"Du musst ${opfer} töten.")
-  enter()
-
-  for (_ <- 0 to 1000) println("-")
+  println("Drücke deine Zahl um zu sehen, wen du töten musst.")
 }
+
+auswahl()
